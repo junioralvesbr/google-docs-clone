@@ -7,6 +7,7 @@ import "quill/dist/quill.snow.css";
 import "./globals.css";
 
 const toolBarsOptions = [
+  [{'font': []}],
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
   [{ size: ["small", false, "large", "huge"] }],
   ["bold", "italic", "underline", "strike"],
@@ -20,6 +21,12 @@ const toolBarsOptions = [
   ["clean"],
 ]
 
+const history = {
+  delay: 2000,
+  maxStack: 100,
+  userOnly: true
+}
+
 export default function Page() {
   const wrapperRef = useCallback(wrapper => {
     if (wrapper === null) return
@@ -27,7 +34,7 @@ export default function Page() {
     wrapper.innerHTML = ""
     const editor = document.createElement("div")
     wrapper.append(editor)
-    new Quill(editor, {theme: "snow", modules: {toolbar: toolBarsOptions}})
+    new Quill(editor, {theme: "snow", modules: {toolbar: toolBarsOptions, history: history}})
   }, [])
 
   return <div className="container" ref={wrapperRef}></div>

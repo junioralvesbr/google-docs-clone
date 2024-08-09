@@ -1,6 +1,8 @@
 'use client'
 import {useState} from "react";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
+
+const ReactQuill = dynamic(() => import("react-quill"), {ssr: false})
 
 import 'react-quill/dist/quill.snow.css';
 
@@ -19,8 +21,28 @@ const toolBarsOptions = [
   ["clean"],
 ]
 
+const quillFormats = [
+  'header',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'link',
+  'image',
+  'align',
+  'color',
+  'code-block',
+];
+
 export default function Page() {
   const [value, setValue] = useState("")
 
-  return <ReactQuill theme="snow" modules={{toolbar: toolBarsOptions}} value={value} onChange={setValue} />
+  return (
+    <div>
+      <ReactQuill theme="snow" modules={{toolbar: toolBarsOptions}} value={value} onChange={setValue} formats={quillFormats} />
+      <button></button>
+    </div>)
 }  

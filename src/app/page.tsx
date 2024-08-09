@@ -4,7 +4,6 @@ import { useCallback } from "react";
 import Quill from "quill";
 
 import "quill/dist/quill.snow.css";
-import "./globals.css";
 
 const toolBarsOptions = [
   [{'font': []}],
@@ -34,7 +33,7 @@ export default function Page() {
     wrapper.innerHTML = ""
     const editor = document.createElement("div")
     wrapper.append(editor)
-    new Quill(editor, {theme: "snow", modules: {toolbar: toolBarsOptions, history: history}})
+    new Quill(editor, {theme: "snow", modules: {toolbar: toolBarsOptions}})
   }, [])
 
   return <div className="container" ref={wrapperRef}></div>

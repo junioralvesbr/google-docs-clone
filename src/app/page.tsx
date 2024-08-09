@@ -36,5 +36,5 @@ export default function Page() {
     new Quill(editor, {theme: "snow", modules: {toolbar: toolBarsOptions}})
   }, [])
 
-  return <div className="container" ref={wrapperRef}></div>
+  return <div className="main-container" ref={wrapperRef}></div>
 }

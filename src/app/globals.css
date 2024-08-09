@@ -6,12 +6,12 @@ body {
   background-color: #f3f3f3;
 }
 
-.container .ql-toolbar.ql-snow,
+.main-container .ql-toolbar.ql-snow,
 .quill .ql-toolbar.ql-snow {
   width: 100%;
 }
 
-.container .ql-editor,
+.main-container .ql-editor,
 .quill .ql-editor {
   width: 8.5in;
   min-height: 11in;
@@ -21,14 +21,14 @@ body {
   background-color: white;
 }
 
-.container .ql-container.ql-snow,
+.main-container .ql-container.ql-snow,
 .quill .ql-container.ql-snow {
   border: none;
   display: flex;
   justify-content: center;
 }
 
-.container .ql-toolbar.ql-snow,
+.main-container .ql-toolbar.ql-snow,
 .quill .ql-toolbar.ql-snow {
   display: flex;
   justify-content: center;
@@ -49,7 +49,7 @@ body {
     background-color: white;
   }
 
-  .container .ql-editor {
+  .main-container .ql-editor {
     width: 6.5in;
     min-height: 9in;
     padding: 0;
@@ -58,7 +58,7 @@ body {
     align-self: flex-start;
   }
 
-  .container .ql-toolbar.ql-snow {
+  .main-container .ql-toolbar.ql-snow {
     display: none;
   }
 }

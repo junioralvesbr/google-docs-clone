@@ -1,40 +1,34 @@
-'use client';
+"use client"
+import { useState } from 'react';
+import { QuillNoSSRWrapper } from './quil';
 
-import { useCallback } from "react";
-import Quill from "quill";
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, false] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    ['link', 'image'],
+    ['clean'],
+  ],
+};
 
-import "quill/dist/quill.snow.css";
+const formats = [
+  'header', 'bold', 'italic', 'underline', 'strike', 'blockquote',
+  'list', 'bullet', 'link', 'image'
+];
 
-const toolBarsOptions = [
-  [{'font': []}],
-  [{ header: [1, 2, 3, 4, 5, 6, false] }],
-  [{ size: ["small", false, "large", "huge"] }],
-  ["bold", "italic", "underline", "strike"],
-  [{ align: [] }],
-  [{ indent: "-1" }, { indent: "+1" }],
-  [{ list: "ordered" }, { list: "bullet" }],
-  [{ color: [] }, { background: [] }],
-  [{ script: "sub" }, { script: "super" }],
-  [{ direction: "rtl" }],
-  ["image", "link", "video", "blockquote", "code-block"],
-  ["clean"],
-]
+export default function MyQuillEditor() {
+  const [content, setContent] = useState('');
 
-const history = {
-  delay: 2000,
-  maxStack: 100,
-  userOnly: true
-}
-
-export default function Page() {
-  const wrapperRef = useCallback(wrapper => {
-    if (wrapper === null) return
-
-    wrapper.innerHTML = ""
-    const editor = document.createElement("div")
-    wrapper.append(editor)
-    new Quill(editor, {theme: "snow", modules: {toolbar: toolBarsOptions}})
-  }, [])
-
-  return <div className="main-container" ref={wrapperRef}></div>
+  return (
+    <div>
+      <QuillNoSSRWrapper 
+        value={content} 
+        onChange={setContent} 
+        modules={modules} 
+        formats={formats} 
+        theme="snow" 
+      />
+    </div>
+  );
 }
